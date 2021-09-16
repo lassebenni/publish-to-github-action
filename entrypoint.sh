@@ -18,12 +18,13 @@ git config user.email "actions@users.noreply.github.com"
 git remote add publisher "${remote_repo}"
 git show-ref # useful for debugging
 git branch --verbose
+git fetch
 
 # install lfs hooks
 git lfs install
 
 # publish any new files
-git checkout -t ${BRANCH_NAME}
+git checkout ${BRANCH_NAME}
 git add -A
 timestamp=$(date -u)
 git commit -m "Automated publish: ${timestamp} ${GITHUB_SHA}" || exit 0
